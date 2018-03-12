@@ -13,10 +13,7 @@ class App extends React.Component {
 
     this.state = {
       time: null,
-      hours: null,
-      minutes: null,
-      seconds: null,
-      milliseconds: null,
+      currentTime: null, 
       results: [],
       isRunning: false,
     };
@@ -31,18 +28,9 @@ class App extends React.Component {
   updateTime(start) {
     const diffTime = new Date() - start;
     start = new Date(diffTime);
-    start.setHours(0);
-    start.getHours();
-    const min = start.getMinutes();
-    const sec = start.getSeconds();
-    const msec = start.getMilliseconds();
-    const h = start.getHours();
     this.setState({
       time: diffTime,
-      hours: h,
-      minutes: min,
-      seconds: sec,
-      milliseconds: msec,
+      currentTime: start,
     });
   }
 
@@ -53,11 +41,7 @@ class App extends React.Component {
 
   resetTime() {
     this.setState({
-      time: null,
-      hours: null,
-      minutes: null,
-      seconds: null,
-      milliseconds: null,
+      currentTime: null,
       results: [],
     });
     this.stopTime();
@@ -74,12 +58,7 @@ class App extends React.Component {
       <div className="container">
         <div className="row d-flex align-items-center" style={{ height: '100%' }}>
           <div className="col">
-            <Time
-              hours={this.state.hours}
-              minutes={this.state.minutes}
-              seconds={this.state.seconds}
-              milliseconds={this.state.milliseconds}
-            />
+            <Time currentTime={this.state.currentTime}/>
             <Controls
               start={this.startTime}
               stop={this.stopTime}

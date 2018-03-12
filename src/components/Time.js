@@ -3,10 +3,15 @@ import React from 'react';
 class Time extends React.Component {
 
   render() {
-    const h = this.props.hours;
-    const m = this.props.minutes;
-    const s = this.props.seconds;
-    const ms = this.props.milliseconds
+    const start = this.props.currentTime;
+    if (start !== null) {
+      start.setHours(0);
+    }
+    const h = start ? start.getHours() : 0;    
+    const m = start ? start.getMinutes() : 0;
+    const s = start ? start.getSeconds() : 0;
+    const ms = start ? start.getMilliseconds() : 0;
+    
     return (
       <h1 className="text-center">
         <span>{h ? (h < 10 ? ('0' + h) : h) : '00'}:</span>
