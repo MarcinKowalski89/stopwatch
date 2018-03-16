@@ -13,7 +13,6 @@ class App extends React.Component {
 
     this.state = {
       time: null,
-      currentTime: null, 
       results: [],
       isRunning: false,
     };
@@ -22,16 +21,13 @@ class App extends React.Component {
   startTime() {
     this.setState({ isRunning: true });
     this.start = this.state.time ? (new Date() - this.state.time) : new Date();
-    this.timer = setInterval(this.updateTime.bind(this, this.start), 1);
+    this.timer = setInterval(this.updateTime.bind(this, this.start), 10);
   }
 
   updateTime(start) {
     const diffTime = new Date() - start;
-    start = new Date(diffTime);
-    this.setState({
-      time: diffTime,
-      currentTime: start,
-    });
+    const time = new Date(diffTime);
+    this.setState({ time });
   }
 
   stopTime() {
@@ -41,7 +37,7 @@ class App extends React.Component {
 
   resetTime() {
     this.setState({
-      currentTime: null,
+      time: null,
       results: [],
     });
     this.stopTime();
@@ -58,7 +54,7 @@ class App extends React.Component {
       <div className="container">
         <div className="row d-flex align-items-center" style={{ height: '100%' }}>
           <div className="col">
-            <Time currentTime={this.state.currentTime}/>
+            <Time time={this.state.time} />
             <Controls
               start={this.startTime}
               stop={this.stopTime}
