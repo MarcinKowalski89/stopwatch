@@ -54,7 +54,9 @@ class App extends React.Component {
       <div className="container">
         <div className="row d-flex align-items-center" style={{ height: '100%' }}>
           <div className="col">
-            <Time time={this.state.time} />
+            <h1 className="text-center">
+              <Time time={this.state.time} />
+            </h1>
             <Controls
               start={this.startTime}
               stop={this.stopTime}

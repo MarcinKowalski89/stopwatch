@@ -15,11 +15,14 @@ const config = {
       {
         test: /\.js?/,
         include: APP_DIR,
+        exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
         test: /\.js?/,
         include: APP_DIR,
+        exclude: /node_modules/,
+        enforce: 'pre',
         loader: 'eslint-loader',
       },
     ],

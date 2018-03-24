@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Time from './Time';
 
 const Results = props => (
   <div>
@@ -9,10 +10,7 @@ const Results = props => (
         const key = i + 1;
         return (
           <li key={key} className="list-group-item">{i + 1}&nbsp;-&nbsp;
-            <span>{item.getHours() < 10 ? `0${item.getHours()}` : item.getHours()}:</span>
-            <span>{item.getMinutes() < 10 ? `0${item.getMinutes()}` : item.getMinutes()}:</span>
-            <span>{item.getSeconds() < 10 ? `0${item.getSeconds()}` : item.getSeconds()}.</span>
-            <span>{item.getMilliseconds()}</span>
+            <Time time={item} />
           </li>
         );
       })}
@@ -20,6 +18,6 @@ const Results = props => (
   </div>
 );
 
-Results.propTypes = { items: PropTypes.array.isRequired };
+Results.propTypes = { items: PropTypes.arrayOf(Date).isRequired };
 
 export default Results;
