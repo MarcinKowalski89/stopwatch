@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildProd": "./node_modules/.bin/webpack -p",
-    "watch": "./node_modules/.bin/webpack -d --watch"
+    "watch": "./node_modules/.bin/webpack -d --watch",
+    "dev": "npm run watch &  webpack-dev-server"
   },
   "author": "Marcin Kowalski",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^2.0.0",

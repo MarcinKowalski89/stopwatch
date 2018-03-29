@@ -27,6 +27,12 @@ const config = {
       },
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+    port: 9966,
+    hot: true,
+    compress: true,
+  },
 };
 
 module.exports = config;
