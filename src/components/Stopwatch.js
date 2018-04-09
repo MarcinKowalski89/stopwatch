@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import Time from './Time';
 import Controls from './Controls';
 import Results from './Results';
@@ -15,6 +16,10 @@ class Stopwatch extends React.Component {
       results: [],
       isRunning: false,
     };
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   startTime() {
@@ -66,6 +71,7 @@ class Stopwatch extends React.Component {
         <div className="col">
           <Results items={this.state.results} />
         </div>
+        <Link className="btn btn-info" to="/globaltime">Global Time</Link>
       </Fragment>
     );
   }

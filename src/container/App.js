@@ -1,16 +1,16 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import Stopwatch from './Stopwatch';
-import GlobalTime from './GlobalTime';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Stopwatch from '../components/Stopwatch';
+import GlobalTime from '../components/GlobalTime';
 
 const App = () => (
   <div className="container">
     <div className="row d-flex align-items-center" style={{ height: '100%' }}>
       <Switch>
-        <Route exact path="/" component={Stopwatch} />
+        <Route path="/stopwatch" component={Stopwatch} />
         <Route path="/globaltime" component={GlobalTime} />
+        <Redirect to="/stopwatch" />
       </Switch>
-      <Link className="btn btn-info" to="/globaltime">Global Time</Link>
     </div>
   </div>
 );

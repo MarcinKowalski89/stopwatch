@@ -25,6 +25,14 @@ const config = {
         enforce: 'pre',
         loader: 'eslint-loader',
       },
+      {
+        test: /\.s?css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
     ],
   },
   devServer: {
