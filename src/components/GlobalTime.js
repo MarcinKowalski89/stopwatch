@@ -4,14 +4,17 @@ import Clock from './Clock';
 import '../styles/GlobalTime.scss';
 
 class GlobalTime extends React.Component {
-  componentWillMount() {
-    this.setState({
+  constructor(props) {
+    super(props);
+
+    this.state = {
       timeWarsaw: new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Warsaw' })),
       timeNewYork: new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })),
       timeTallinn: new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Tallinn' })),
       timeDubai: new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })),
-    });
+    };
   }
+
   componentDidMount() {
     this.clock = setInterval(() => this.run(), 1000);
   }
