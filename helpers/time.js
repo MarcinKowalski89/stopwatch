@@ -1,5 +1,7 @@
-export default (time) => {
-  time.setHours(0);
+export default (time, resetHours) => {
+  if (resetHours) {
+    time.setHours(0);
+  }
   return {
     h: time.getHours(),
     m: time.getMinutes(),

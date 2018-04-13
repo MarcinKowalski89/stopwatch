@@ -8,49 +8,35 @@ class GlobalTime extends React.Component {
     super(props);
 
     this.state = {
-      timeWarsaw: new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Warsaw' })),
-      timeNewYork: new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })),
-      timeTallinn: new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Tallinn' })),
-      timeDubai: new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })),
+      clocks: [
+        {
+          city: 'Warsaw',
+          locale: 'en-US',
+          timeZone: 'Europe/Warsaw',
+        },
+        {
+          city: 'New York',
+          locale: 'en-US',
+          timeZone: 'America/New_York',
+        },
+        {
+          city: 'Tallinn',
+          locale: 'en-US',
+          timeZone: 'Europe/Tallinn',
+        },
+        {
+          city: 'Dubai',
+          locale: 'en-US',
+          timeZone: 'Asia/Dubai',
+        },
+      ],
     };
-  }
-
-  componentDidMount() {
-    this.clock = setInterval(() => this.run(), 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.clock);
-  }
-
-  run() {
-    this.setState({
-      timeWarsaw: new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Warsaw' })),
-      timeNewYork: new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })),
-      timeTallinn: new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Tallinn' })),
-      timeDubai: new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })),
-    });
   }
 
   render() {
     return (
       <Fragment>
-        <Clock
-          time={this.state.timeWarsaw}
-          city="Warsaw"
-        />
-        <Clock
-          time={this.state.timeNewYork}
-          city="New York"
-        />
-        <Clock
-          time={this.state.timeTallinn}
-          city="Tallinn"
-        />
-        <Clock
-          time={this.state.timeDubai}
-          city="Dubai"
-        />
+        {this.state.clocks.map(clock => <Clock key={clock.city} {...clock} />)}
         <Link className="btn btn-info link" to="/stopwatch">Stopwatch</Link>
       </Fragment>
     );

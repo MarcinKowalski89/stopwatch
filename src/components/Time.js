@@ -15,7 +15,7 @@ const Time = (props) => {
   }
   const {
     h, m, s, ms,
-  } = timeHelper(props.time);
+  } = timeHelper(props.time, 'resetHours');
 
   return (
     <Fragment>
