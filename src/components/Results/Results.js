@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Time from './Time';
+import Time from '../Time/Time';
 
 const Results = props => (
   <div>

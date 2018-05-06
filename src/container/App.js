@@ -1,18 +1,24 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Stopwatch from '../components/Stopwatch';
-import GlobalTime from '../components/GlobalTime';
+import React, { Fragment } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Stopwatch from '../components/Stopwatch/Stopwatch';
+import GlobalTime from '../components/GlobalTime/GlobalTime';
+import Nav from '../components/Nav/Nav';
 
 const App = () => (
-  <div className="container">
-    <div className="row d-flex align-items-center" style={{ height: '100%' }}>
-      <Switch>
-        <Route path="/stopwatch" component={Stopwatch} />
-        <Route path="/globaltime" component={GlobalTime} />
-        <Redirect to="/stopwatch" />
-      </Switch>
-    </div>
-  </div>
+  <BrowserRouter>
+    <Fragment>
+      <Nav />
+      <div className="container">
+        <div className="row d-flex align-items-center" style={{ height: '100%' }}>
+          <Switch>
+            <Route path="/stopwatch" component={Stopwatch} />
+            <Route path="/globaltime" component={GlobalTime} />
+            <Redirect to="/stopwatch" />
+          </Switch>
+        </div>
+      </div>
+    </Fragment>
+  </BrowserRouter>
 );
 
 export default App;

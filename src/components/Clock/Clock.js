@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import timeHelper from '../../helpers/time';
+import timeHelper from '../../../helpers/time';
 
 class Clock extends React.Component {
   constructor(props) {
@@ -48,6 +48,12 @@ class Clock extends React.Component {
     return (
       <div className="clock-wrapper">
         <div className="clock">
+          <button
+            className="btn btn-danger"
+            onClick={() => this.props.addClock(this.props.index)}
+          >
+            X
+          </button>
           <div
             className="hours"
             style={hoursDeg}
@@ -71,6 +77,8 @@ Clock.propTypes = {
   locale: PropTypes.string.isRequired,
   timeZone: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
+  addClock: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Clock;

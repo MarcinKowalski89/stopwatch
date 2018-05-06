@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import Time from './Time';
-import Controls from './Controls';
-import Results from './Results';
+import Time from '../Time/Time';
+import Controls from '../Controls/Controls';
+import Results from '../Results/Results';
 
 class Stopwatch extends React.Component {
   constructor(props) {
@@ -71,7 +70,6 @@ class Stopwatch extends React.Component {
         <div className="col">
           <Results items={this.state.results} />
         </div>
-        <Link className="btn btn-info" to="/globaltime">Global Time</Link>
       </Fragment>
     );
   }
