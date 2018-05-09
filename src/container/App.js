@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+
 import Stopwatch from '../components/Stopwatch/Stopwatch';
 import GlobalTime from '../components/GlobalTime/GlobalTime';
 import Nav from '../components/Nav/Nav';

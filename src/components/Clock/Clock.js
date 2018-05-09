@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import timeHelper from '../../../helpers/time';
 
 class Clock extends React.Component {

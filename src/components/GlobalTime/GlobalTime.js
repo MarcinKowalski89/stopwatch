@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+
 import Clock from '../Clock/Clock';
 import './GlobalTime.scss';
 

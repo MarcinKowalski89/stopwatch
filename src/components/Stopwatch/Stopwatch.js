@@ -1,4 +1,8 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { startStopwatch, stopStopwatch, addResult, resetResults } from './actions';
 import Time from '../Time/Time';
 import Controls from '../Controls/Controls';
 import Results from '../Results/Results';
@@ -12,8 +16,6 @@ class Stopwatch extends React.Component {
 
     this.state = {
       time: null,
-      results: [],
-      isRunning: false,
     };
   }
 
@@ -22,7 +24,7 @@ class Stopwatch extends React.Component {
   }
 
   startTime() {
-    this.setState({ isRunning: true });
+    this.props.startStopwatch();
     this.start = this.state.time ? (new Date() - this.state.time) : new Date();
     this.timer = setInterval(this.updateTime.bind(this, this.start), 10);
   }
@@ -34,21 +36,21 @@ class Stopwatch extends React.Component {
   }
 
   stopTime() {
-    this.setState({ isRunning: false });
+    this.props.stopStopwatch();
     clearInterval(this.timer);
   }
 
   resetTime() {
     this.setState({
       time: null,
-      results: [],
     });
+    this.props.resetResults();
     this.stopTime();
   }
 
   saveTime() {
     if (this.state.time) {
-      this.setState({ results: this.state.results.concat(this.state.time) });
+      this.props.addResult(this.state.time);
     }
   }
 
@@ -64,14 +66,39 @@ class Stopwatch extends React.Component {
             stop={this.stopTime}
             reset={this.resetTime}
             save={this.saveTime}
-            isRunning={this.state.isRunning}
+            isRunning={this.props.isRunning}
           />
         </div>
         <div className="col">
-          <Results items={this.state.results} />
+          <Results />
         </div>
       </Fragment>
     );
   }
 }
-export default Stopwatch;
+
+Stopwatch.propTypes = {
+  isRunning: PropTypes.bool.isRequired,
+  startStopwatch: PropTypes.func.isRequired,
+  stopStopwatch: PropTypes.func.isRequired,
+  resetResults: PropTypes.func.isRequired,
+  addResult: PropTypes.func.isRequired,
+};
+
+export default connect(
+  state => ({
+    isRunning: state.stopwatch.isRunning,
+  }),
+  {
+    startStopwatch,
+    stopStopwatch,
+    addResult,
+    resetResults,
+  },
+  // dispatch => ({
+  //   startStopwatch: () => dispatch(startStopwatch()),
+  //   stopStopwatch: () => dispatch(stopStopwatch()),
+  //   addResult: time => dispatch(addResult(time)),
+  //   resetResults: () => dispatch(resetResults()),
+  // }),
+)(Stopwatch);
