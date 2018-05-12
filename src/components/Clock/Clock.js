@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { hideClock } from '../GlobalTime/actions';
 import timeHelper from '../../../helpers/time';
 
 class Clock extends React.Component {
@@ -9,7 +11,10 @@ class Clock extends React.Component {
 
     this.state = {
       time: new Date(new Date()
-        .toLocaleString(this.props.locale, { timeZone: this.props.timeZone })),
+        .toLocaleString(
+          this.props.clocks[this.props.city].locale,
+          { timeZone: this.props.clocks[this.props.city].timeZone },
+        )),
     };
   }
 
@@ -24,7 +29,10 @@ class Clock extends React.Component {
   tick() {
     this.setState({
       time: new Date(new Date()
-        .toLocaleString(this.props.locale, { timeZone: this.props.timeZone })),
+        .toLocaleString(
+          this.props.clocks[this.props.city].locale,
+          { timeZone: this.props.clocks[this.props.city].timeZone },
+        )),
     });
   }
 
@@ -45,13 +53,12 @@ class Clock extends React.Component {
     const secondsDeg = {
       transform: `rotate(${sdeg}deg)`,
     };
-
     return (
       <div className="clock-wrapper">
         <div className="clock">
           <button
             className="btn btn-danger"
-            onClick={() => this.props.addClock(this.props.index)}
+            onClick={() => this.props.hideClock(this.props.city)}
           >
             X
           </button>
@@ -75,11 +82,16 @@ class Clock extends React.Component {
 }
 
 Clock.propTypes = {
-  locale: PropTypes.string.isRequired,
-  timeZone: PropTypes.string.isRequired,
+  clocks: PropTypes.objectOf(Object).isRequired,
+  hideClock: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
-  addClock: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
-export default Clock;
+export default connect(
+  state => ({
+    clocks: state.globalTime,
+  }),
+  {
+    hideClock,
+  },
+)(Clock);
