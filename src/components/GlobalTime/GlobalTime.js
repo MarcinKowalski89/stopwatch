@@ -6,34 +6,46 @@ import { showClock, hideClock } from './actions';
 import Clock from '../Clock/Clock';
 import './GlobalTime.scss';
 
-const GlobalTime = props => (
-  <Fragment>
-    <ul className="d-flex flex-row">
-      {Object.keys(props.clocks).map(clock => (
-        <li key={clock}>
-          <button
-            className="btn btn-info"
-            onClick={() => props.showClock(clock)}
-            disabled={props.clocks[clock].show}
-          >
-            {props.clocks[clock].city}
-          </button>
-        </li>
-      ))}
-    </ul>
-    <div className="d-flex flex-wrap">
-      {Object.keys(props.clocks).map(clock => (
-        props.clocks[clock].show
-          ? <Clock
-            key={clock}
-            hideClock={props.hideClock}
-            {...props.clocks[clock]}
-          />
-          : null
-      ))}
-    </div>
-  </Fragment>
-);
+const GlobalTime = (props) => {
+  const cities = Object.keys(props.clocks);
+
+  return (
+    <Fragment>
+      <ul className="d-flex flex-row">
+        {cities.map((city) => {
+          const currentClock = props.clocks[city];
+
+          return (
+            <li key={city}>
+              <button
+                className="btn btn-info"
+                onClick={() => props.showClock(city)}
+                disabled={currentClock.show}
+              >
+                {currentClock.city}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="d-flex flex-wrap">
+        {cities.map((city) => {
+          const currentClock = props.clocks[city];
+
+          return (
+            currentClock.show
+            ? <Clock
+              key={city}
+              hideClock={props.hideClock}
+              {...currentClock}
+            />
+            : null
+          );
+        })}
+      </div>
+    </Fragment>
+  );
+};
 
 GlobalTime.propTypes = {
   clocks: PropTypes.objectOf(Object).isRequired,
