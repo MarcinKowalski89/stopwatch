@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { showClock } from './actions';
+import { showClock, hideClock } from './actions';
 import Clock from '../Clock/Clock';
 import './GlobalTime.scss';
 
@@ -26,7 +26,8 @@ const GlobalTime = props => (
         props.clocks[clock].show
           ? <Clock
             key={clock}
-            city={clock}
+            hideClock={props.hideClock}
+            {...props.clocks[clock]}
           />
           : null
       ))}
@@ -34,7 +35,10 @@ const GlobalTime = props => (
   </Fragment>
 );
 
-GlobalTime.propTypes = { clocks: PropTypes.objectOf(Object).isRequired };
+GlobalTime.propTypes = {
+  clocks: PropTypes.objectOf(Object).isRequired,
+  hideClock: PropTypes.func.isRequired,
+};
 
 export default connect(
   state => ({
@@ -42,5 +46,6 @@ export default connect(
   }),
   {
     showClock,
+    hideClock,
   },
 )(GlobalTime);

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import { hideClock } from '../GlobalTime/actions';
 import timeHelper from '../../../helpers/time';
 
 class Clock extends React.Component {
@@ -11,10 +9,7 @@ class Clock extends React.Component {
 
     this.state = {
       time: new Date(new Date()
-        .toLocaleString(
-          this.props.clocks[this.props.city].locale,
-          { timeZone: this.props.clocks[this.props.city].timeZone },
-        )),
+        .toLocaleString(this.props.locale, { timeZone: this.props.timeZone })),
     };
   }
 
@@ -29,11 +24,12 @@ class Clock extends React.Component {
   tick() {
     this.setState({
       time: new Date(new Date()
-        .toLocaleString(
-          this.props.clocks[this.props.city].locale,
-          { timeZone: this.props.clocks[this.props.city].timeZone },
-        )),
+        .toLocaleString(this.props.locale, { timeZone: this.props.timeZone })),
     });
+  }
+
+  deleteWhiteSpaces() {
+    return this.props.city.replace(/\s/g, '');
   }
 
   render() {
@@ -53,12 +49,13 @@ class Clock extends React.Component {
     const secondsDeg = {
       transform: `rotate(${sdeg}deg)`,
     };
+
     return (
       <div className="clock-wrapper">
         <div className="clock">
           <button
             className="btn btn-danger"
-            onClick={() => this.props.hideClock(this.props.city)}
+            onClick={() => this.props.hideClock(this.deleteWhiteSpaces())}
           >
             X
           </button>
@@ -82,16 +79,10 @@ class Clock extends React.Component {
 }
 
 Clock.propTypes = {
-  clocks: PropTypes.objectOf(Object).isRequired,
   hideClock: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
+  timeZone: PropTypes.string.isRequired,
 };
 
-export default connect(
-  state => ({
-    clocks: state.globalTime,
-  }),
-  {
-    hideClock,
-  },
-)(Clock);
+export default Clock;
