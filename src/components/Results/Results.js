@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Time from '../Time/Time';
 
-const Results = props => (
+export const Results = props => (
   <div>
     <h2>List of time results</h2>
     <ul className="list-group">

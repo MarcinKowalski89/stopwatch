@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
         isRunning: false,
       };
     case 'ADD_RESULT':
+    console.log(state.results)
       return {
         ...state,
         results: state.results.concat(action.data),

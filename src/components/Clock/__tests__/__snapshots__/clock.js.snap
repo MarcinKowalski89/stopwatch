@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clock should match default snapshot 1`] = `
+<div
+  className="clock-wrapper"
+>
+  <div
+    className="clock"
+  >
+    <button
+      className="btn btn-danger"
+      onClick={[Function]}
+    >
+      X
+    </button>
+    <div
+      className="hours"
+      style={
+        Object {
+          "transform": "rotate(200.5deg)",
+        }
+      }
+    />
+    <div
+      className="minutes"
+      style={
+        Object {
+          "transform": "rotate(248deg)",
+        }
+      }
+    />
+    <div
+      className="seconds"
+      style={
+        Object {
+          "transform": "rotate(120deg)",
+        }
+      }
+    />
+  </div>
+  <h4
+    className="city"
+  >
+    Warsaw
+  </h4>
+</div>
+`;

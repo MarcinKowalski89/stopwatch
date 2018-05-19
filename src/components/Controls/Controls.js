@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Controls = (props) => {
+export const Controls = (props) => {
   const {
     isRunning, start, stop, reset, save,
   } = props;

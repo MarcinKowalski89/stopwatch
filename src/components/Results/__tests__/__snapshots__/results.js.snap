@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results shoud match default snapshot 1`] = `
+<div>
+  <h2>
+    List of time results
+  </h2>
+  <ul
+    className="list-group"
+  />
+</div>
+`;
+
+exports[`Results shoud match snapshot for 3 results 1`] = `
+<div>
+  <h2>
+    List of time results
+  </h2>
+  <ul
+    className="list-group"
+  >
+    <li
+      className="list-group-item"
+      key="1"
+    >
+      1
+       - 
+      <Time
+        time={2017-06-13T04:41:20.000Z}
+      />
+    </li>
+    <li
+      className="list-group-item"
+      key="2"
+    >
+      2
+       - 
+      <Time
+        time={2017-06-13T04:42:20.000Z}
+      />
+    </li>
+    <li
+      className="list-group-item"
+      key="3"
+    >
+      3
+       - 
+      <Time
+        time={2017-06-13T04:43:20.000Z}
+      />
+    </li>
+  </ul>
+</div>
+`;

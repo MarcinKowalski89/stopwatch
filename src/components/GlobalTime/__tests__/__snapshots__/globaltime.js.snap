@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalTime should match default snapshot 1`] = `
+<React.Fragment>
+  <ul
+    className="d-flex flex-row"
+  >
+    <li
+      key="Warsaw"
+    >
+      <button
+        className="btn btn-info"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Warsaw
+      </button>
+    </li>
+    <li
+      key="NewYork"
+    >
+      <button
+        className="btn btn-info"
+        disabled={false}
+        onClick={[Function]}
+      >
+        New York
+      </button>
+    </li>
+    <li
+      key="Tallinn"
+    >
+      <button
+        className="btn btn-info"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Tallinn
+      </button>
+    </li>
+    <li
+      key="Dubai"
+    >
+      <button
+        className="btn btn-info"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Dubai
+      </button>
+    </li>
+  </ul>
+  <div
+    className="d-flex flex-wrap"
+  />
+</React.Fragment>
+`;
+
+exports[`GlobalTime should match snapshot with Warsaw and Dubai clocks 1`] = `
+<React.Fragment>
+  <ul
+    className="d-flex flex-row"
+  >
+    <li
+      key="Warsaw"
+    >
+      <button
+        className="btn btn-info"
+        disabled={true}
+        onClick={[Function]}
+      >
+        Warsaw
+      </button>
+    </li>
+    <li
+      key="NewYork"
+    >
+      <button
+        className="btn btn-info"
+        disabled={false}
+        onClick={[Function]}
+      >
+        New York
+      </button>
+    </li>
+    <li
+      key="Tallinn"
+    >
+      <button
+        className="btn btn-info"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Tallinn
+      </button>
+    </li>
+    <li
+      key="Dubai"
+    >
+      <button
+        className="btn btn-info"
+        disabled={true}
+        onClick={[Function]}
+      >
+        Dubai
+      </button>
+    </li>
+  </ul>
+  <div
+    className="d-flex flex-wrap"
+  >
+    <Clock
+      city="Warsaw"
+      hideClock={[Function]}
+      key="Warsaw"
+      locale="en-US"
+      show={true}
+      timeZone="Europe/Warsaw"
+    />
+    <Clock
+      city="Dubai"
+      hideClock={[Function]}
+      key="Dubai"
+      locale="en-US"
+      show={true}
+      timeZone="Asia/Dubai"
+    />
+  </div>
+</React.Fragment>
+`;

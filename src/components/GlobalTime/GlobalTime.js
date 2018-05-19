@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 
 import { showClock, hideClock } from './actions';
 import Clock from '../Clock/Clock';
-import './GlobalTime.scss';
 
-const GlobalTime = (props) => {
+export const GlobalTime = (props) => {
   const cities = Object.keys(props.clocks);
 
   return (

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controls shoud match default snapshot 1`] = `
+<div
+  className="d-flex justify-content-center btn-group"
+>
+  <button
+    className="btn btn-success"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Start
+  </button>
+  <button
+    className="btn btn-warning"
+    onClick={[Function]}
+  >
+    Reset
+  </button>
+  <button
+    className="btn btn-primary"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Save time to list
+  </button>
+</div>
+`;
+
+exports[`Controls shoud match snapshot for running time 1`] = `
+<div
+  className="d-flex justify-content-center btn-group"
+>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+  >
+    Stop
+  </button>
+  <button
+    className="btn btn-warning"
+    onClick={[Function]}
+  >
+    Reset
+  </button>
+  <button
+    className="btn btn-primary"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Save time to list
+  </button>
+</div>
+`;
