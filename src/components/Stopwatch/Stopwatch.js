@@ -7,7 +7,7 @@ import Time from '../Time/Time';
 import Controls from '../Controls/Controls';
 import Results from '../Results/Results';
 
-class Stopwatch extends React.Component {
+export class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     ['startTime', 'stopTime', 'resetTime', 'saveTime'].forEach((method) => {
