@@ -1,31 +1,9 @@
-const initialState = {
-  Warsaw: {
-    city: 'Warsaw',
-    locale: 'en-US',
-    timeZone: 'Europe/Warsaw',
-    show: false,
-  },
-  NewYork: {
-    city: 'New York',
-    locale: 'en-US',
-    timeZone: 'America/New_York',
-    show: false,
-  },
-  Tallinn: {
-    city: 'Tallinn',
-    locale: 'en-US',
-    timeZone: 'Europe/Tallinn',
-    show: false,
-  },
-  Dubai: {
-    city: 'Dubai',
-    locale: 'en-US',
-    timeZone: 'Asia/Dubai',
-    show: false,
-  },
-};
+const initialState = {};
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'STORE_CLOCKS':
+      action.data.forEach((element) => { initialState[element.zoneName.split('/').splice(-1)] = element; });
+      return initialState;
     case 'SHOW_CLOCK':
       return { ...state, [action.data]: { ...state[action.data], show: true } };
     case 'HIDE_CLOCK':

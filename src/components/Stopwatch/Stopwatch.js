@@ -57,7 +57,7 @@ export class Stopwatch extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="col">
+        <div className="col align-self-center">
           <h1 className="text-center">
             <Time time={this.state.time} />
           </h1>

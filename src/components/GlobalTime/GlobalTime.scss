@@ -1,85 +1,98 @@
 .row {
-  ul {
-    width: 100%;
+  .list-clocks {
+    width: 200px;
+    overflow: auto;
+    max-height: 94%;
+    position: fixed;
+    left: 0;
+    top: 45px;
 
     li {
       list-style: none;
-      padding: 10px;
+      padding: 5px;
+      cursor: pointer;
     }
   }
-  
-  .clock-wrapper {
-    
-    .clock {
-      position: relative;
-      border-radius: 50%;
-      height: 250px;
-      width: 250px;
-      margin: 15px;
-      background-color: #eee;
-      border: 2px solid #000;
-      box-shadow: 0 0 5px #000;
-      
-      &::after,
-      .hours,
-      .minutes,
-      .seconds {
-        position: absolute;
-      }
-      
-      &::after,
-      .hours,
-      .minutes {
-        background-color: #000;
-      }
-      
-      .hours,
-      .minutes {
-        transform-origin: 50% 100%;
-      }
-      
-      &::after {
-        content: '';
-        background: red;
+
+
+  .clocks-container {
+    position: absolute;
+    right: 0;
+    width: calc(100% - 200px);
+    .clock-wrapper {
+
+      .clock {
+        position: relative;
         border-radius: 50%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        width: 15px;
-        height: 15px;
+        height: 250px;
+        width: 250px;
+        margin: 15px;
+        background-color: #eee;
+        border: 2px solid #000;
+        box-shadow: 0 0 5px #000;
+
+        &::after,
+        .hours,
+        .minutes,
+        .seconds {
+          position: absolute;
+        }
+
+        &::after,
+        .hours,
+        .minutes {
+          background-color: #000;
+        }
+
+        .hours,
+        .minutes {
+          transform-origin: 50% 100%;
+        }
+
+        &::after {
+          content: '';
+          background: red;
+          border-radius: 50%;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%,-50%);
+          width: 15px;
+          height: 15px;
+        }
+
+        .hours {
+          height: 20%;
+          left: 48.75%;
+          top: 30%;
+          width: 2.5%;
+        }
+
+        .minutes {
+          height: 40%;
+          left: 49%;
+          top: 10%;
+          width: 2%;
+        }
+
+        .seconds {
+          background: red;
+          height: 45%;
+          left: 49.5%;
+          top: 14%;
+          transform-origin: 50% 80%;
+          width: 1%;
+        }
+        .btn-danger {
+          position: absolute;
+          right: -10px;
+          top: -10px;
+        }
       }
-    
-      .hours {
-        height: 20%;
-        left: 48.75%;
-        top: 30%;
-        width: 2.5%;
+
+      .city {
+        text-align: center;
       }
-    
-      .minutes {
-        height: 40%;
-        left: 49%;
-        top: 10%;
-        width: 2%;
-      }
-      
-      .seconds {
-        background: red;
-        height: 45%;
-        left: 49.5%;
-        top: 14%;
-        transform-origin: 50% 80%;
-        width: 1%;
-      }
-      .btn-danger {
-        position: absolute;
-        right: -10px;
-        top: -10px;
-      }
-    }
-    
-    .city {
-      text-align: center;
     }
   }
+
 }

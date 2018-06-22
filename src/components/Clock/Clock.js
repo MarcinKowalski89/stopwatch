@@ -9,7 +9,7 @@ class Clock extends React.Component {
 
     this.state = {
       time: new Date(new Date()
-        .toLocaleString(this.props.locale, { timeZone: this.props.timeZone })),
+        .toLocaleString('en-US', { timeZone: this.props.zoneName })),
     };
   }
 
@@ -21,15 +21,19 @@ class Clock extends React.Component {
     clearInterval(this.clock);
   }
 
+  getCityName() {
+    return this.props.zoneName.split('/').splice(-1);
+  }
+
+  displayProperCityName() {
+    return this.getCityName().toString().replace(/_|-/g, ' ');
+  }
+
   tick() {
     this.setState({
       time: new Date(new Date()
-        .toLocaleString(this.props.locale, { timeZone: this.props.timeZone })),
+        .toLocaleString('en-US', { timeZone: this.props.zoneName })),
     });
-  }
-
-  deleteWhiteSpaces() {
-    return this.props.city.replace(/\s/g, '');
   }
 
   render() {
@@ -49,13 +53,12 @@ class Clock extends React.Component {
     const secondsDeg = {
       transform: `rotate(${sdeg}deg)`,
     };
-
     return (
       <div className="clock-wrapper">
         <div className="clock">
           <button
             className="btn btn-danger"
-            onClick={() => this.props.hideClock(this.deleteWhiteSpaces())}
+            onClick={() => this.props.hideClock(this.getCityName())}
           >
             X
           </button>
@@ -72,7 +75,7 @@ class Clock extends React.Component {
             style={secondsDeg}
           />
         </div>
-        <h4 className="city">{this.props.city}</h4>
+        <h4 className="city">{this.displayProperCityName()}</h4>
       </div>
     );
   }
@@ -80,9 +83,7 @@ class Clock extends React.Component {
 
 Clock.propTypes = {
   hideClock: PropTypes.func.isRequired,
-  city: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
-  timeZone: PropTypes.string.isRequired,
+  zoneName: PropTypes.string.isRequired,
 };
 
 export default Clock;

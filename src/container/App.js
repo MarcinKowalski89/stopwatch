@@ -11,7 +11,7 @@ const App = () => (
     <Fragment>
       <Nav />
       <div className="container">
-        <div className="row d-flex align-items-center" style={{ height: '100%' }}>
+        <div className="row d-flex" style={{ height: '100%' }}>
           <Switch>
             <Route path="/stopwatch" component={Stopwatch} />
             <Route path="/globaltime" component={GlobalTime} />

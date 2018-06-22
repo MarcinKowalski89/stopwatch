@@ -1,3 +1,7 @@
+export const storeClocks = citys => ({
+  type: 'STORE_CLOCKS',
+  data: citys,
+});
 export const showClock = city => ({
   type: 'SHOW_CLOCK',
   data: city,
